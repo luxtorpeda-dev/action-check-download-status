@@ -54,9 +54,11 @@ async function run() {
 
         console.info(`issuesFound: ${JSON.stringify(issuesFound)}`);
 
-        const matrix = {
-            include: []
-        };
+        const matrix = {};
+
+        if(issuesFound.length) {
+            matrix.include = [];
+        }
         
         for(let downloadIssue of issuesFound) {
             matrix.include.push(downloadIssue);
