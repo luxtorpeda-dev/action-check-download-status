@@ -14,8 +14,20 @@ async function checkDownloadArray(downloadArray, game, issuesFound) {
 
         console.info(`checkDownloadArray for ${JSON.stringify(download)}`);
 
-        const result = await axios.head(download.url + download.file);
-        if(result.status != 200) {
+        try {
+            const result = await axios.head(download.url + download.file);
+            if(result.status != 200) {
+                issuesFound.push({
+                    download_name: download.name,
+                    download_status: result.status,
+                    download_status_text: result.statusText,
+                    game_name: game.game_name,
+                    game_app_id: game.app_id
+                });
+            } else {
+                console.info(`checkDownloadArray success for ${JSON.stringify(download)}`);
+            }
+        } catch(error) {
             issuesFound.push({
                 download_name: download.name,
                 download_status: result.status,
@@ -23,8 +35,6 @@ async function checkDownloadArray(downloadArray, game, issuesFound) {
                 game_name: game.game_name,
                 game_app_id: game.app_id
             });
-        } else {
-            console.info(`checkDownloadArray success for ${JSON.stringify(download)}`);
         }
     }
 }
