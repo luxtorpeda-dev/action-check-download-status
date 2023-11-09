@@ -30,8 +30,8 @@ async function checkDownloadArray(downloadArray, game, issuesFound) {
         } catch(error) {
             issuesFound.push({
                 download_name: download.name,
-                download_status: result.status,
-                download_status_text: result.statusText,
+                download_status: error.status,
+                download_status_text: error.statusText,
                 game_name: game.game_name,
                 game_app_id: game.app_id
             });
