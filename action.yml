@@ -3,7 +3,7 @@ description: 'Checks download status of marked downloads'
 author: 'd10sfan'
 runs:
     using: 'node20'
-    main: 'dist/index.js'
+    main: 'index.js'
 outputs:
   matrix:
     description: Matrix
