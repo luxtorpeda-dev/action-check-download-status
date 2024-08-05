@@ -4,6 +4,8 @@ const fs = require('fs').promises;
 const path = require('path');
 const axios = require('axios');
 
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
+
 console.log('Starting.');
 
 async function checkDownloadArray(downloadArray, game, issuesFound) {
@@ -28,10 +30,11 @@ async function checkDownloadArray(downloadArray, game, issuesFound) {
                 console.info(`checkDownloadArray success for ${JSON.stringify(download)}`);
             }
         } catch(error) {
+            console.log(error);
             issuesFound.push({
                 download_name: download.name,
-                download_status: error.response.status,
-                download_status_text: error.response.statusText,
+                download_status: error.response ? error.response.status : -1,
+                download_status_text: error.response ? error.response.statusText : error.message,
                 game_name: game.game_name,
                 game_app_id: game.app_id
             });
