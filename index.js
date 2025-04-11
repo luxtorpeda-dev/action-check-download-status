@@ -12,14 +12,13 @@ function combineUrlAndFile(url, file) {
 
 async function checkDownloadArray(downloadArray, game, issuesFound) {
     for (let download of downloadArray) {
-        console.info(`Processing download: ${JSON.stringify(download)}`);
-
         const name = download.name ? download.name.toLowerCase() : '';
         const url = download.url || '';
 
         // 1. Network (HEAD) Check:
         // If URL does NOT include "https://github.com/luxtorpeda-dev/packages"
         if (!url.includes('https://github.com/luxtorpeda-dev/packages')) {
+            console.info(`Processing network check: ${JSON.stringify(download)}`);
             let fullUrl;
             try {
                 fullUrl = combineUrlAndFile(url, download.file);
@@ -87,6 +86,7 @@ async function checkDownloadArray(downloadArray, game, issuesFound) {
         // Proceed with GitHub release check only if none of the ignore conditions are met.
         if (!ignoreConditions.some(Boolean)) {
             if (url.includes('github.com') && url.includes('/releases/')) {
+                console.info(`Processing new release check: ${JSON.stringify(download)}`);
                 try {
                     const parsedUrl = new URL(url);
                     const parts = parsedUrl.pathname.split('/').filter(Boolean);
