@@ -134,8 +134,8 @@ async function checkDownloadArray(downloadArray, game, issuesFound) {
 
 async function run() {
     try {
-        // Get packages JSON from the action input.
-        const packagesJsonStr = core.getInput('packagesJson');
+        const packagesJsonPath = path.join('metadata', 'packagessniper_v2.json');
+        const packagesJsonStr = await fs.readFile(packagesJsonPath, 'utf-8');
         const packagesJson = JSON.parse(packagesJsonStr);
 
         const issuesFound = [];
