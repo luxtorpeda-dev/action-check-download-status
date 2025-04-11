@@ -12,11 +12,6 @@ function combineUrlAndFile(url, file) {
 
 async function checkDownloadArray(downloadArray, game, issuesFound) {
     for (let download of downloadArray) {
-        // Only process downloads that have check_download_status set.
-        if (!download.check_download_status) {
-            continue;
-        }
-
         console.info(`Processing download: ${JSON.stringify(download)}`);
 
         const name = download.name ? download.name.toLowerCase() : '';
