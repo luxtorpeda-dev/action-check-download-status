@@ -80,6 +80,7 @@ async function checkDownloadArray(downloadArray, game, issuesFound) {
             url.includes('daikatana/tree'),
             name.includes('music'),
             name.includes('rvgl'),
+            url.includes('ezquake'),
             name === 'eawpats'
         ];
 
