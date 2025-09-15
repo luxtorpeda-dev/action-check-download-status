@@ -62,6 +62,10 @@ async function checkDownloadArray(downloadArray, game, issuesFound) {
             }
         }
 
+        if(download.ignore_updates) {
+            continue;
+        }
+
         // 2. GitHub Release Check:
         // Define ignore conditions that prevent the GitHub release check.
         const ignoreConditions = [
