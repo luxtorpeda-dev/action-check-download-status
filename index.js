@@ -134,7 +134,7 @@ async function checkDownloadArray(downloadArray, game, issuesFound) {
 
 async function run() {
     try {
-        const packagesJsonPath = path.join('metadata', 'packagesrt4.json');
+        const packagesJsonPath = path.join('metadata', 'packagessniper_v2.json');
         const packagesJsonStr = await fs.readFile(packagesJsonPath, 'utf-8');
         const packagesJson = JSON.parse(packagesJsonStr);
 
