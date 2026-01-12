@@ -15,6 +15,10 @@ async function checkDownloadArray(downloadArray, game, issuesFound) {
         const name = download.name ? download.name.toLowerCase() : '';
         const url = download.url || '';
 
+        if(download.ignore_all_checks) {
+            continue;
+        }
+
         // 1. Network (HEAD) Check:
         // If URL does NOT include "https://github.com/luxtorpeda-dev/packages"
         if (!url.includes('https://github.com/luxtorpeda-dev/packages')) {
