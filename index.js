@@ -1,3 +1,6 @@
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
 import * as core from '@actions/core';
 import { context } from '@actions/github';
 const fs = require('fs').promises;
